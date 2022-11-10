@@ -1,0 +1,38 @@
+<div class="container bucket-list__container">
+    <h1>Bucket list</h1>
+
+
+    <!-- bucket list component -->
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between pb-4">
+            <div class="">All buckets ({{ bucketsCount }})</div>
+            <button class="bucket-list__btn">Create New Bucket</button>
+        </div>
+        <div class="bucket-list">
+            <div class="bucket-list__header ps-1">
+                <div class="row">
+                    <div class="col-8">
+                        <h5 class="mb-0">Name</h5>
+                    </div>
+                    <div class="col-4">
+                        <h5>Location</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="bucket-list__body ps-1 mt-4 mb-2">
+                <div 
+                    class="bucket-list__body-item row"
+                    *ngFor="let bucket of buckets"
+                >
+                    <div class="col-8">
+                        <h5>{{ bucket.name }}</h5>
+                    </div>
+                    <div class="col-4">
+                        <h5>{{ bucket.location}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

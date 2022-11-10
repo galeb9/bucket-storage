@@ -1,0 +1,24 @@
+.bucket-list__container {
+
+    .bucket-list__btn {
+        background-color: var(--btn);
+        color: white;
+        padding: 0 14px;
+        box-shadow: black 2.5px 3px;
+        transition: var(--transition);
+        &:active {
+            box-shadow: none;
+        }
+    }
+    .bucket-list {
+        border: 3px solid black;
+        .bucket-list__header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid black;
+        }
+        .bucket-list__body {
+    
+        }
+    }
+
+}
