@@ -1,0 +1,17 @@
+.tabs__container {
+    position: relative;
+    .tabs__header {
+        display: flex;
+        .tabs__btn {
+            cursor: pointer;
+            padding: 10px 30px;
+        }
+        .changeBackground {
+            background-color: white;
+        }
+    }
+    .tabs__body {
+        padding: 30px ;
+        min-height: 25vh;
+    }
+}

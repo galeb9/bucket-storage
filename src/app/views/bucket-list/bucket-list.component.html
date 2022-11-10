@@ -11,21 +11,20 @@
             <div class="col-3"></div>
             <div class="col-4">
                 <label class="create-bucket__label mb-2" for="location">Bucket Name*</label><br>
-                <!-- <input class="create-bucket__input w-100" type="text" id="location" name="location" > -->
                 <select [(ngModel)]="bucketLocation" class="create-bucket__input w-100" aria-label="Default select example">
                     <option *ngFor="let location of locations" [ngValue]="location">{{location}}</option>
                   </select>
             </div>
         </div>
-        <button (click)="createNewBucket()" class="bucket-list__btn">Create Bucket</button>
+        <button (click)="createNewBucket()" class="bucket__btn">Create Bucket</button>
     </div>
 
 
     <!-- bucket list component -->
-    <div class="container  bg-white py-4 px-4 mt-5 rounded">
+    <div class="container bg-white py-4 px-4 mt-5 rounded">
         <div class="d-flex justify-content-between pb-4">
             <div class="">All buckets ({{ bucketsCount }})</div>
-            <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket-list__btn">Create New Bucket</button>
+            <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn">Create New Bucket</button>
         </div>
         <div class="bucket-list">
             <div class="bucket-list__header ps-1">

@@ -11,6 +11,8 @@ import  { HttpClientModule } from '@angular/common/http'
 // components
 import { BasePopupComponent } from './components/UI/base-popup/base-popup.component';
 import { HeaderComponent } from './components/header/header.component';
+import { TabsComponent } from './components/tabs/tabs/tabs.component';
+import { TabComponent } from './components/tabs/tab/tab.component';
 
 // views
 import { BucketListComponent } from './views/bucket-list/bucket-list.component';
@@ -45,7 +47,9 @@ const appRoutes: Routes = [
     SingleBucketComponent,
     NotFoundComponent,
     HeaderComponent,
-    SingleBucketItemComponent
+    SingleBucketItemComponent,
+    TabsComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,

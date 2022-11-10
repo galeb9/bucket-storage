@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BucketService } from '../../services/bucket.service'
 import { Router } from '@angular/router';
 import { Bucket } from 'src/app/Bucket';
+import { BucketService } from '../../services/bucket.service'
 
 @Component({
   selector: 'app-bucket-list',

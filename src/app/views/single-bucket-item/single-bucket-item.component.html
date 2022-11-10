@@ -1,1 +1,71 @@
-<p>single-bucket-item works!</p>
+<div *ngIf="bucket" class="bucket container">
+    <h2 class="mb-4">{{ bucket.name }}</h2>
+    <app-tabs class="tabs__container">
+
+        <app-tab [tabTitle]="'Files'">
+            <div class="file__container container bg-white px-4  rounded">
+                <div class="d-flex justify-content-between pb-1">
+                    <p>All Files ({{ fileCount }})</p>
+                    <div>
+                        <button class="bucket__btn">Delete Object</button>
+                        <button class="bucket__btn">Upload Object</button>
+                    </div>
+                </div>
+                <div class="file-list">
+                    <div class="file-list__header ps-1">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <h5>Name</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>Last modified</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>Size</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-list__body ps-1 mt-3 mb-4">
+                        <div 
+                            class="file-list__body-item mb-1 row"
+                            *ngFor="let file of files"
+                        >
+                            <div class="col-1">
+                                <span class="file-icon"></span>
+                            </div>
+                            <div class="col-5">
+                                <h5>{{ file.name }}</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>{{ file.lastModified}}</h5>
+                            </div>
+                            <div class="col-3">
+                                <h5>{{ calculateSize(file.size) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-tab>
+
+        <app-tab tabTitle="Details">
+            <button class="bucket__btn--delete btn__absolute">Delete Bucket</button>
+            <div class="details__container">
+                <div class="details__item row ps-4">
+                    <p class="details__item-text col-2">Bucket name:</p>
+                    <p class="details__item-text col-2">{{ bucket.name }}</p>
+                </div>
+                <div class="details__item row ps-4">
+                    <p class="details__item-text col-2">Location:</p>
+                    <p class="details__item-text col-3">{{ bucket.location }}</p>
+                </div>
+                <div class="details__item row ps-4">
+                    <p class="details__item-text col-2">Sotrage size:</p>
+                    <p class="details__item-text col-3">{{ bucket.storageSize + 'GB' }}</p>
+                </div>
+            </div>
+
+        </app-tab>
+    </app-tabs>
+</div>

@@ -9,4 +9,20 @@
     --componentBg: #ffffff;
     --btn: #393e6f;
     --transition: all 0.15s ease-out;
+    --error: #cf1f1d;
+}
+
+.bucket__btn,
+.bucket__btn--delete {
+    background-color: var(--btn);
+    color: white;
+    padding: 0 14px;
+    box-shadow: black 2.5px 3px;
+    transition: var(--transition);
+    &:active {
+        box-shadow: none;
+    }
+}
+.bucket__btn--delete {
+    background-color: var(--error);
 }

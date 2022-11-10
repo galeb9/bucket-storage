@@ -1,0 +1,39 @@
+.bucket {
+    font-weight: 700;
+    .btn__absolute {
+        position: absolute;
+        right: 0;
+        top: 3px;
+    }
+    .file__container {
+        .bucket__btn {
+            background-color: white;
+            color: black;
+            font-weight: 700;
+        }
+        .bucket__btn + .bucket__btn {
+            margin-left: 14px;
+        }
+        .file-list {
+            border: 3px solid black;
+            .file-list__header {
+                background-color: var(--secondary);
+                border-bottom: 3px solid black;
+            }
+            .file-list__body {
+                .file-list__body-item {
+                    // border-bottom: 1px solid black;
+                    transition: var(--transition);
+                    &:hover {
+                        background-color: var(--secondary);
+                        cursor: pointer;
+                    }
+                    .file-icon {
+                        min-width: 30px;
+                    }
+                }
+            }
+        }
+    }
+}   
+
