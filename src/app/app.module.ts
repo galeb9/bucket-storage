@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-// import { NgbPaginationModule, NgbAlertModule, NgbModalModule  } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,20 +24,16 @@ const appRoutes: Routes = [
   { 
     path: 'sinlge-bucket', 
     component: SingleBucketComponent,
-     //   children: [
-  //     {
-  //         path: '',
-  //         component: AllBlogsComponent
-  //     },
-  //     {
-  //       path: 'edit-blog/:id',
-  //       component: EditBlogComponent
-  //     },
+    children: [
+        // {
+        //   path: ':id',
+        //   component:  
+        // }
   //     {
   //       path: ':id',
   //       component: SingleBlogComponent
   //     },
-  //   ]
+    ]
   },
   { path: '**', component: NotFoundComponent }
 ]
@@ -54,7 +50,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false}),
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

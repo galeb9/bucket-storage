@@ -11,7 +11,7 @@
         }
     }
     .create-bucket__container {
-
+        padding-left: 10px;
         .create-bucket__heading {
             font-size: 18px;
         }
@@ -21,6 +21,8 @@
         }
         .create-bucket__input {
             padding: 0 6px 3px;
+            border: 2px solid black;
+            min-height: 25px;
         }
     }
     .bucket-list {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TitleStrategy } from '@angular/router';
 import { BucketListItem } from 'src/app/BucketListItem';
 
 
@@ -8,21 +9,31 @@ import { BucketListItem } from 'src/app/BucketListItem';
   styleUrls: ['./bucket-list.component.scss']
 })
 export class BucketListComponent {
-  isCreateBucketOpen:boolean = false;
   buckets:BucketListItem[] = [
-    {
-      name: "BestStorage",
-      location: "Kranj"
-    },
-    {
-      name: "Pics",
-      location: "Ljubljana"
-    }
+    { name: "BestStorage", location: "Kranj" }, 
+    { name: "Pics", location: "Ljubljana" } 
   ]
+  locations: string[]= [ "Ljubljana", "Kranj", "Koper"];
+
   bucketsCount:number = this.buckets.length;
+  isCreateBucketOpen:boolean = false;
+  bucketName:string = "";
+  bucketLocation:string = "";
 
   openCreateBucket () {
-
+    this.isCreateBucketOpen = true;
   }
 
+  closeCreateBucket () {
+    this.isCreateBucketOpen = false;
+  }
+
+  createNewBucket () {
+    const newBucket = {
+      name: this.bucketName,
+      location: this.bucketLocation
+    };
+    this.buckets.push(newBucket);
+    this.closeCreateBucket();
+  }
 }
