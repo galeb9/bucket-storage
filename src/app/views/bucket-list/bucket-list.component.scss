@@ -10,6 +10,19 @@
             box-shadow: none;
         }
     }
+    .create-bucket__container {
+
+        .create-bucket__heading {
+            font-size: 18px;
+        }
+        .create-bucket__label {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .create-bucket__input {
+            padding: 0 6px 3px;
+        }
+    }
     .bucket-list {
         border: 3px solid black;
         .bucket-list__header {
@@ -20,5 +33,4 @@
     
         }
     }
-
 }

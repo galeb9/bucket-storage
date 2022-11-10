@@ -8,8 +8,8 @@ import { BucketListItem } from 'src/app/BucketListItem';
   styleUrls: ['./bucket-list.component.scss']
 })
 export class BucketListComponent {
-  bucketsCount: number = 0;
-  buckets: BucketListItem[] = [
+  isCreateBucketOpen:boolean = false;
+  buckets:BucketListItem[] = [
     {
       name: "BestStorage",
       location: "Kranj"
@@ -19,7 +19,10 @@ export class BucketListComponent {
       location: "Ljubljana"
     }
   ]
+  bucketsCount:number = this.buckets.length;
 
+  openCreateBucket () {
 
-  
+  }
+
 }
