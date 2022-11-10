@@ -42,6 +42,7 @@
                 <div 
                     class="bucket-list__body-item row"
                     *ngFor="let bucket of buckets"
+                    (click)="openBucketItem(bucket.id)"
                 >
                     <div class="col-8">
                         <h5>{{ bucket.name }}</h5>
