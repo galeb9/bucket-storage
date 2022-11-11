@@ -13,9 +13,11 @@
 }
 
 .bucket__btn,
-.bucket__btn--delete {
-    background-color: var(--btn);
+.bucket__btn--delete,
+.bucket__btn--blue {
+    // background-color: var(--btn);
     color: white;
+    font-weight: 700;
     padding: 0 14px;
     box-shadow: black 2.5px 3px;
     transition: var(--transition);
@@ -23,6 +25,6 @@
         box-shadow: none;
     }
 }
-.bucket__btn--delete {
-    background-color: var(--error);
-}
+.bucket__btn { color:  black }
+.bucket__btn--delete { background-color: var(--error) }
+.bucket__btn--blue { background-color: var(--btn); }

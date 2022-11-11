@@ -7,9 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import  { HttpClientModule } from '@angular/common/http'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // components
-import { BasePopupComponent } from './components/UI/base-popup/base-popup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
@@ -42,7 +42,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BasePopupComponent,
     BucketListComponent,
     SingleBucketComponent,
     NotFoundComponent,
@@ -57,7 +56,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { enableTracing: false}),
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

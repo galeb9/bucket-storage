@@ -1,5 +1,6 @@
 <div *ngIf="bucket" class="bucket container">
     <h2 class="mb-4">{{ bucket.name }}</h2>
+
     <app-tabs class="tabs__container">
 
         <app-tab [tabTitle]="'Files'">
@@ -7,16 +8,16 @@
                 <div class="d-flex justify-content-between pb-1">
                     <p>All Files ({{ fileCount }})</p>
                     <div>
-                        <button class="bucket__btn">Delete Object</button>
+                        <button (click)="openPopup(selectedFile)" class="bucket__btn">Delete Object</button>
                         <button class="bucket__btn">Upload Object</button>
                     </div>
                 </div>
                 <div class="file-list">
-                    <div class="file-list__header ps-1">
+                    <div class="file-list__header">
                         <div class="row">
-                            <div class="col-1"></div>
-                            <div class="col-5">
-                                <h5>Name</h5>
+                            <div class="col-6 file-list__name">
+                                <div class="file-icon--empty" ></div>
+                                <h5 class="mb-0">Name</h5>
                             </div>
                             <div class="col-3">
                                 <h5>Last modified</h5>
@@ -26,16 +27,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="file-list__body ps-1 mt-3 mb-4">
+                    <div class="file-list__body mt-3 mb-4">
                         <div 
                             class="file-list__body-item mb-1 row"
                             *ngFor="let file of files"
+                            (click)="selectFile(file)"
+                            [ngClass]="{ 'select-item' : selectedFile === file }"
+
                         >
-                            <div class="col-1">
-                                <span class="file-icon"></span>
-                            </div>
-                            <div class="col-5">
-                                <h5>{{ file.name }}</h5>
+                            <div class="col-6 file-list__name">
+                                <fa-icon class="file-icon" [icon]="faFileLines"></fa-icon>
+                                <h5 class="mb-0 text-overflow">{{ file.name }}</h5>
                             </div>
                             <div class="col-3">
                                 <h5>{{ file.lastModified}}</h5>
@@ -50,7 +52,7 @@
         </app-tab>
 
         <app-tab tabTitle="Details">
-            <button class="bucket__btn--delete btn__absolute">Delete Bucket</button>
+            <button (click)="openPopup(true)" class="bucket__btn--delete btn__absolute">Delete Bucket</button>
             <div class="details__container">
                 <div class="details__item row ps-4">
                     <p class="details__item-text col-2">Bucket name:</p>
@@ -65,7 +67,21 @@
                     <p class="details__item-text col-3">{{ bucket.storageSize + 'GB' }}</p>
                 </div>
             </div>
-
         </app-tab>
+
     </app-tabs>
+
+    <p *ngIf="warningMessage" class="warning-message rounded">{{ warningMessage }}</p>
+
+    <div *ngIf="isPopupOpen" class="base-popup__container">
+        <div class="base-popup bg-white">
+            <p>{{ popupText }}</p>
+            <div class="base-popup__btns">
+                <button (click)="deleteBtn()" class="bucket__btn">Delete</button>
+                <button (click)="closePopup()" class="bucket__btn">Cancel</button>
+            </div>
+        </div>
+        <div (click)="closePopup()" class="base-popup__overlay"></div>
+    </div>
+
 </div>

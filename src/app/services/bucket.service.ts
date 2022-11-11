@@ -14,4 +14,9 @@ export class BucketService {
   getBuckets(): Observable<Bucket[]> {
     return this.http.get<Bucket[]>(this.apiUrl)
   }
+
+  deleteBucket(bucket: Bucket): Observable<Bucket> {
+    const url = `${this.apiUrl}/${bucket.id}`;
+    return this.http.delete<Bucket>(url)
+  }
 }
