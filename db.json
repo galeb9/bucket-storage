@@ -1,58 +1,58 @@
 {
-    "buckets" : [
-        { 
-            "id": 1,
-            "name": "BestStorage", 
-            "location": "Kranj",
-            "storageSize": 2.8,
-            "files": [
-                {
-                    "name": "FileName01",
-                    "lastModified": "06.09.2015",
-                    "size": "2000"
-                },
-                {
-                    "name": "FileName03",
-                    "lastModified": "05.01.2015",
-                    "size": "100"
-                },
-                {
-                    "name": "FileName03",
-                    "lastModified": "12.11.2016",
-                    "size": "2000"
-                }
-            ]
-        }, 
-        { 
-            "id": 2, 
-            "name": "Pics", 
-            "location": "Ljubljana",
-            "storageSize": 4.9,
-            "files": [
-                {
-                    "name": "FileName03",
-                    "lastModified": "05.01.2015",
-                    "size": "100"
-                },
-                {
-                    "name": "FileName03",
-                    "lastModified": "12.11.2016",
-                    "size": "2000"
-                }
-            ]
-        } ,
-        { 
-            "id": 3, 
-            "name": "SomeImages", 
-            "location": "Koper",
-            "storageSize": 3.2,
-            "files": [
-                {
-                    "name": "FileName01",
-                    "lastModified": "06.09.2015",
-                    "size": "2000"
-                }
-            ]
-        } 
-    ]
+  "buckets": [
+    { 
+        "id": 1,
+        "name": "BestStorage", 
+        "location": "Kranj",
+        "storageSize": 2.8,
+        "files": [
+            {
+                "name": "FileName01",
+                "lastModified": "06.09.2015",
+                "size": "2000"
+            },
+            {
+                "name": "FileName03",
+                "lastModified": "05.01.2015",
+                "size": "100"
+            },
+            {
+                "name": "FileName03",
+                "lastModified": "12.11.2016",
+                "size": "2000"
+            }
+        ]
+    }, 
+    {
+      "id": 2,
+      "name": "Pics",
+      "location": "Ljubljana",
+      "storageSize": 4.9,
+      "files": [
+        {
+          "name": "FileName03",
+          "lastModified": "05.01.2015",
+          "size": "100"
+        },
+        {
+          "name": "FileName03",
+          "lastModified": "12.11.2016",
+          "size": "2000"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "SomeImages",
+      "location": "Koper",
+      "storageSize": 3.2,
+      "files": [
+        {
+          "name": "FileName01",
+          "lastModified": "06.09.2015",
+          "size": "2000"
+        }
+      ]
+    }
+  ]
 }

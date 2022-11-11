@@ -23,7 +23,7 @@
     <!-- bucket list component -->
     <div class="container bg-white py-4 px-4 mt-5 rounded">
         <div class="d-flex justify-content-between pb-4">
-            <div class="">All buckets ({{ bucketsCount }})</div>
+            <div class="">All buckets ({{ buckets.length || 0 }})</div>
             <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn--blue ">Create New Bucket</button>
         </div>
         <div class="bucket-list">

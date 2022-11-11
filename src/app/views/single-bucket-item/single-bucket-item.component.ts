@@ -80,7 +80,8 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     } else {
       this.warningMessage = "No file selected. Please select one!"
     }
-    this.selectedFile = null;
+
+    if(this.activeCondition !== this.selectedFile) this.selectedFile = null
   }
 
   closePopup() {
@@ -91,15 +92,21 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     this.activeCondition === this.selectedFile ? this.deleteFile() : this.deleteBucket()
   }
 
-  deleteFile () {
-    this.closePopup()
-    console.log("File deleted")
-  }
-
   deleteBucket () {
     this.closePopup()
     this.bucketService.deleteBucket(this.bucket).subscribe(() => this.route.navigateByUrl("/"));
     console.log("Bucket deleted")
+  }
+
+  deleteFile () {
+    // this.bucketService.deleteFile(this.bucket.id, this.selectedFile).subscribe(() => {
+    //   this.files = this.files.filter(file => file !== this.selectedFile)
+    // });
+    this.files = this.files.filter(file => file !== this.selectedFile)
+    console.log(this.files)
+    this.selectedFile = null;
+    this.closePopup()
+    console.log("File deleted")
   }
   
 }

@@ -21,7 +21,11 @@
             border-bottom: 3px solid black;
         }
         .bucket-list__body {
-            transition: var(--transition);
+            
+            .bucket-list__body-item {
+                transition: var(--transition);
+                --bs-gutter-x: 0;
+            }
             .bucket-list__body-item:hover {
                 background-color: var(--secondary);
                 cursor: pointer;

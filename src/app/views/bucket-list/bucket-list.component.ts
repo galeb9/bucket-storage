@@ -13,7 +13,6 @@ export class BucketListComponent implements OnInit {
 
   locations: string[]= [ "Ljubljana", "Kranj", "Koper"];
 
-  bucketsCount:number = this.buckets.length;
   isCreateBucketOpen:boolean = false;
   bucketName:string = "";
   bucketLocation:string = "";
