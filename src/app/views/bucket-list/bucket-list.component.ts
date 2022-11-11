@@ -34,16 +34,18 @@ export class BucketListComponent implements OnInit {
   createNewBucket () {
     const randomNum = Math.floor(Math.random() * 1000)
     if(this.bucketName && this.bucketLocation) {
-      this.buckets.push(
-        {
-          name: this.bucketName,
-          location: this.bucketLocation,
-          id: randomNum,
-          storageSize: 0
-        })
-        console.log(randomNum)
+      const newBucket = {
+        name: this.bucketName,
+        location: this.bucketLocation,
+        id: randomNum,
+        storageSize: 0,
+        files: []
+      }
+
+      this.bucketService.createBucket(newBucket).subscribe(() => this.buckets.push(newBucket))
+      console.log(randomNum);
+      this.closeCreateBucket();
     }
-    this.closeCreateBucket();
   }
 
   openBucketItem (id: any) {

@@ -3,6 +3,12 @@ import { Bucket, File } from 'src/app/Bucket';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +25,15 @@ export class BucketService {
     const url = `${this.apiUrl}/${bucket.id}`;
     return this.http.delete<Bucket>(url)
   }
+
+
   // deleteFile(bucketID: any, file: File): Observable<File> {
   //   const url = `${this.apiUrl}/${bucketID}`;
   //   return this.http.delete<File>(url)
   // }
+
+  createBucket(bucket: Bucket) : Observable<Bucket> {
+    return this.http.post<Bucket>(this.apiUrl, bucket, httpOptions)
+  }
+
 }
