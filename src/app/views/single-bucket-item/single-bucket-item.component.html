@@ -10,7 +10,7 @@
                     <div class="file__container-btns">
                         <button (click)="openPopup(selectedFile)" class="bucket__btn">Delete Object</button>
                         <label class="bucket__btn" for="upload-file">Upload object</label>
-                        <input (change)="getFile($event)" type="file" id="upload-file" />
+                        <input (change)="uploadFile($event)" type="file" id="upload-file" />
                     </div>
                 </div>
                 <div class="file-list">
@@ -44,7 +44,7 @@
                                 <h5>{{ file.lastModified}}</h5>
                             </div>
                             <div class="col-3">
-                                <h5>{{ calculateSize(file.size) }}</h5>
+                                <h5>{{ formatBytes(file.size, 2) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="details__item row ps-4">
                     <p class="details__item-text col-2">Sotrage size:</p>
-                    <p class="details__item-text col-3">{{ bucket.storageSize + 'GB' }}</p>
+                    <p class="details__item-text col-3">{{  formatBytes(bucketSize, 1) }}</p>
                 </div>
             </div>
         </app-tab>

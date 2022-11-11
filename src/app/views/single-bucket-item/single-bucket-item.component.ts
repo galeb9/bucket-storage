@@ -24,9 +24,7 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   isPopupOpen:boolean = false;
   selectedFile:any;
   activeCondition:any;
-
-  name: string = "";
-  file: any;
+  bucketSize:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,9 +36,9 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
       this.bucketID = this.getRouteID();
       this.getAllBuckets();
-
       setTimeout(() => {
         this.findRouteBucket(this.bucketID);
+        this.getBucketSize();
       }, 1000);
   }
 
@@ -74,15 +72,53 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     this.selectedFile = null
   }
 
-  calculateSize (size:number) {
-    size = Math.floor(size);
-    return size > 1000 ? Math.floor(size / 1000) + "MB" : size + "KB";
+  // calculateSize (size:number) {
+  //   size = Math.floor(size);
+  //   return size > 1000 ? Math.floor(size / 1000) + "MB" 
+  //     : size > 1000 ? Math.floor(size / 1000) + "MB" : size + "KB";
+  // }
+
+  formatBytes(bytes:number, decimal:number = 0) {
+    const marker = 1024; // Change to 1000 if required
+    const kiloBytes = marker; // One Kilobyte is 1024 bytes
+    const megaBytes = marker * marker; // One MB is 1024 KB
+    const gigaBytes = marker * marker * marker; // One GB is 1024 MB
+
+    if(decimal > 0) {
+      if(bytes < kiloBytes) return bytes + " Bytes";
+      else if(bytes < megaBytes) return(bytes / kiloBytes).toFixed(decimal) + " KB";
+      else if(bytes < gigaBytes) return(bytes / megaBytes).toFixed(decimal) + " MB";
+      else return(bytes / gigaBytes).toFixed(decimal) + " GB";
+      // if(bytes < kiloBytes) return bytes + " Bytes";
+      // else if(bytes < megaBytes) return Number.isInteger(bytes / kiloBytes) ? (bytes / kiloBytes) + "KB" : (bytes / kiloBytes).toFixed(decimal) + " KB";
+      // else if(bytes < gigaBytes) return Number.isInteger(bytes / megaBytes) ? (bytes / megaBytes) + "MB" : (bytes / megaBytes).toFixed(decimal) + " MB";
+      // else return Number.isInteger(bytes / megaBytes) ? (bytes / gigaBytes) + "GB" : (bytes / gigaBytes).toFixed(decimal) + " GB";
+    } else {
+        if(bytes < kiloBytes) return bytes + " Bytes";
+        else if(bytes < megaBytes) return Math.round(bytes / kiloBytes) + " KB";
+        else if(bytes < gigaBytes) return Math.round(bytes / megaBytes) + " MB";
+        else return Math.round(bytes / gigaBytes) + " GB";
+    }
+
+
   }
 
-  
+  formatDetailsBytes(bytes:number) {
+    const marker = 1024; // Change to 1000 if required
+    const kiloBytes = marker; // One Kilobyte is 1024 bytes
+    const megaBytes = marker * marker; // One MB is 1024 KB
+    const gigaBytes = marker * marker * marker; // One GB is 1024 MB
+
+    if(bytes < kiloBytes) return bytes + " Bytes";
+    else if(bytes < megaBytes) return Math.round(bytes / kiloBytes).toFixed() + " KB";
+    else if(bytes < gigaBytes) return Math.round(bytes / megaBytes) + " MB";
+    else return Math.round(bytes / gigaBytes) + " GB";
+  }
+
   addZeros(item:string) {
     return item.length < 2 ? item.padStart(2, '0') : item
   }
+
   formatDate (item:string) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     item = item + "";
@@ -138,7 +174,7 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
 
   // upload file
 
-  getFile(event: any) {
+  uploadFile(event: any) {
     this.warningMessage = ""
     this.deselectFile();
 
@@ -151,19 +187,22 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
         size: file.size
       }
       this.files.push(newFile)
-      console.log(newFile)
+      this.getBucketSize()
+
+      //   let formData = new FormData();
+      //   formData.set("file", this.file);
+
+      //   this.http
+      //     .post("http://localhost:5000/buckets/this.bucketID", formData)
+      //     .subscribe(response => {})
+      // console.log(newFile)
     }
   }
 
-  // submitFileData() {
-  //   let formData = new FormData();
-  //   formData.set("file", this.file);
-
-  //   this.http
-  //     .post("http://localhost:5000/buckets/this.bucketID", formData)
-  //     .subscribe(response => {})
-  // }
-
-
-  
+  // Deatils
+  getBucketSize (newFileSize:number = 0) {
+    this.bucketSize = this.files.map(el => +el.size).reduce((total, value) => total += value)
+    // update bucket size if new files are uploaded
+    // this.bucketSize = this.bucket.storageSize + newFileSize
+  }
 }
