@@ -9,10 +9,14 @@
         top: 3px;
     }
     .file__container {
-        .bucket__btn {
-            background-color: white;
-            color: black;
-            font-weight: 700;
+        label {
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        #upload-file {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
         }
         .bucket__btn + .bucket__btn {
             margin-left: 14px;
@@ -55,7 +59,7 @@
                 }
             }
             .text-overflow {
-                width: 160px;
+                max-width: 250px;
                 overflow:hidden; 
                 white-space:nowrap; 
                 text-overflow: ellipsis;

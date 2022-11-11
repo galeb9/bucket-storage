@@ -7,9 +7,10 @@
             <div class="file__container container bg-white px-4  rounded">
                 <div class="d-flex justify-content-between pb-1">
                     <p>All Files ({{ fileCount }})</p>
-                    <div>
+                    <div class="file__container-btns">
                         <button (click)="openPopup(selectedFile)" class="bucket__btn">Delete Object</button>
-                        <button class="bucket__btn">Upload Object</button>
+                        <label class="bucket__btn" for="upload-file">Upload object</label>
+                        <input (change)="getFile($event)" type="file" id="upload-file" />
                     </div>
                 </div>
                 <div class="file-list">
@@ -19,10 +20,10 @@
                                 <div class="file-icon--empty" ></div>
                                 <h5 class="mb-0">Name</h5>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 ps-0">
                                 <h5>Last modified</h5>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 ps-0">
                                 <h5>Size</h5>
                             </div>
                         </div>
@@ -83,5 +84,4 @@
         </div>
         <div (click)="closePopup()" class="base-popup__overlay"></div>
     </div>
-
 </div>

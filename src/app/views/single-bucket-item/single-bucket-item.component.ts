@@ -2,8 +2,10 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bucket, File } from 'src/app/Bucket';
 import { BucketService } from '../../services/bucket.service'
-
 import { faFileLines } from '@fortawesome/free-solid-svg-icons';
+
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-single-bucket-item',
@@ -23,10 +25,14 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   selectedFile:any;
   activeCondition:any;
 
+  name: string = "";
+  file: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private route: Router,
-    private bucketService: BucketService
+    private bucketService: BucketService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +46,7 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     // this.findRouteBucket(this.bucketID)
+    this.formatDate("Thu Jan 8 2022 12:26:51 GMT+0100 (Central European Standard Time)")
   }
 
   getRouteID () {
@@ -63,9 +70,29 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     console.log(this.selectedFile)
   } 
 
+  deselectFile() {
+    this.selectedFile = null
+  }
+
   calculateSize (size:number) {
     size = Math.floor(size);
     return size > 1000 ? Math.floor(size / 1000) + "MB" : size + "KB";
+  }
+
+  
+  addZeros(item:string) {
+    return item.length < 2 ? item.padStart(2, '0') : item
+  }
+  formatDate (item:string) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    item = item + "";
+    const date = item.split(" ");
+
+    const month = this.addZeros(String(months.findIndex((item:string) => date[1] === item) + 1));
+    const day = this.addZeros(date[2]);
+    const year = this.addZeros(date[3]);
+
+    return `${day}.${month}.${year}`;
   }
 
   openPopup(condition:any) {
@@ -108,5 +135,35 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     this.closePopup()
     console.log("File deleted")
   }
+
+  // upload file
+
+  getFile(event: any) {
+    this.warningMessage = ""
+    this.deselectFile();
+
+    const file = event.target.files[0];
+    const date = this.formatDate(file.lastModifiedDate)
+    if(file) {
+      const newFile = {
+        name: file.name,
+        lastModified: date,
+        size: file.size
+      }
+      this.files.push(newFile)
+      console.log(newFile)
+    }
+  }
+
+  // submitFileData() {
+  //   let formData = new FormData();
+  //   formData.set("file", this.file);
+
+  //   this.http
+  //     .post("http://localhost:5000/buckets/this.bucketID", formData)
+  //     .subscribe(response => {})
+  // }
+
+
   
 }
