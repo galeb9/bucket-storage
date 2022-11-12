@@ -2,7 +2,6 @@
     <h2 class="mb-4">{{ bucket.name }}</h2>
 
     <app-tabs class="tabs__container">
-
         <app-tab [tabTitle]="'Files'">
             <div class="file__container container bg-white px-4  rounded">
                 <div class="d-flex justify-content-between pb-1">
@@ -77,14 +76,8 @@
 
     <p *ngIf="warningMessage" class="warning-message rounded">{{ warningMessage }}</p>
 
-    <div *ngIf="isPopupOpen" class="base-popup__container">
-        <div class="base-popup bg-white">
-            <p>{{ popupText }}</p>
-            <div class="base-popup__btns">
-                <button (click)="deleteBtn()" class="bucket__btn">Delete</button>
-                <button (click)="closePopup()" class="bucket__btn">Cancel</button>
-            </div>
-        </div>
-        <div (click)="closePopup()" class="base-popup__overlay"></div>
-    </div>
+    <app-popup *ngIf="isPopupOpen" [text]="popupText">
+        <button (click)="deleteBtn()" class="bucket__btn">Delete</button>
+        <button (click)="closePopup()" class="bucket__btn">Cancel</button>
+    </app-popup>
 </div>

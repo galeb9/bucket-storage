@@ -21,6 +21,8 @@ import { BucketsViewComponent } from './views/buckets-view/buckets-view.componen
 import { SingleBucketComponent } from './views/single-bucket/single-bucket.component';
 import { SingleBucketItemComponent } from './views/single-bucket-item/single-bucket-item.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { FilesComponent } from './components/files/files.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 
 const appRoutes: Routes = [
@@ -52,7 +54,9 @@ const appRoutes: Routes = [
     TabsComponent,
     TabComponent,
     CreateBucketComponent,
-    BucketsListComponent
+    BucketsListComponent,
+    FilesComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

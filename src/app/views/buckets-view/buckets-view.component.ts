@@ -11,8 +11,6 @@ import { BucketService } from '../../services/bucket.service'
 export class BucketsViewComponent implements OnInit {
   buckets:Bucket[] = [];
 
-  locations: string[]= [ "Ljubljana", "Kranj", "Koper"];
-
   isCreateBucketOpen:boolean = false;
   bucketName:string = "";
   bucketLocation:string = "";
@@ -44,7 +42,6 @@ export class BucketsViewComponent implements OnInit {
         storageSize: 0,
         files: []
       }
-
       this.bucketService.createBucket(newBucket).subscribe(() => this.buckets.push(newBucket))
       console.log(randomNum);
       this.closeCreateBucket();

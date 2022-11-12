@@ -1,0 +1,9 @@
+<div class="base-popup__container">
+    <div class="base-popup bg-white">
+        <p>{{ text }}</p>
+        <div class="base-popup__btns">
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div (click)="closePopup()" class="base-popup__overlay"></div>
+</div>

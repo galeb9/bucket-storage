@@ -8,7 +8,7 @@ import { Bucket } from 'src/app/Bucket';
 })
 export class BucketsListComponent {
   @Input() buckets: Bucket[] = [];
-  @Output() openBucket:EventEmitter<any> = new EventEmitter<string>();
+  @Output() openBucket:EventEmitter<any> = new EventEmitter<any>();
 
   openBucketItem(bucketID: any) {
     this.openBucket.emit(bucketID)

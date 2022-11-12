@@ -39,15 +39,17 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
       }, 1000);
   }
 
+  
+  myCallbackFunction = (args: any): void => {
+    console.log(args)
+  }
+
   ngAfterContentInit(): void {
+    
   }
 
   getRouteID () {
     return this.activatedRoute.snapshot.paramMap.get('id');
-  }
-
-  getAllBuckets() {
-    this.bucketService.getBuckets().subscribe((buckets) => this.buckets = buckets);
   }
 
   findRouteBucket(id:any) {
@@ -57,7 +59,11 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
       this.fileCount = this.files.length;
     } 
   }
-  
+
+  getAllBuckets() {
+    this.bucketService.getBuckets().subscribe((buckets) => this.buckets = buckets);
+  }
+
   selectFile(file: File) {
     this.selectedFile = file;
     console.log(this.selectedFile)
