@@ -19,12 +19,13 @@
         .bucket-list__header {
             background-color: var(--secondary);
             border-bottom: 3px solid black;
+
         }
         .bucket-list__body {
             
             .bucket-list__body-item {
                 transition: var(--transition);
-                --bs-gutter-x: 0;
+              
             }
             .bucket-list__body-item:hover {
                 background-color: var(--secondary);

@@ -12,6 +12,10 @@
     --error: #cf1f1d;
 }
 
+.container, .row {
+    --bs-gutter-x: 0;
+}
+
 .bucket__btn,
 .bucket__btn--delete,
 .bucket__btn--blue {

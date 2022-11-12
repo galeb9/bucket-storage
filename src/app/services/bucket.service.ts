@@ -26,14 +26,17 @@ export class BucketService {
     return this.http.delete<Bucket>(url)
   }
 
-
-  // deleteFile(bucketID: any, file: File): Observable<File> {
-  //   const url = `${this.apiUrl}/${bucketID}`;
-  //   return this.http.delete<File>(url)
-  // }
-
   createBucket(bucket: Bucket) : Observable<Bucket> {
     return this.http.post<Bucket>(this.apiUrl, bucket, httpOptions)
   }
 
+  uploadFile(bucketID: number, bucket: Bucket): Observable<Bucket> {
+    const url = `${this.apiUrl}/${bucketID}`;
+    return this.http.put<Bucket>(url, bucket)
+  }
+
+  deleteFile(bucketID: number, bucket: Bucket): Observable<Bucket> {
+    const url = `${this.apiUrl}/${bucketID}`;
+    return this.http.put<Bucket>(url, bucket)
+  }
 }

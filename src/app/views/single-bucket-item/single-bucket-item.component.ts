@@ -162,14 +162,11 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   }
 
   deleteFile () {
-    // this.bucketService.deleteFile(this.bucket.id, this.selectedFile).subscribe(() => {
-    //   this.files = this.files.filter(file => file !== this.selectedFile)
-    // });
     this.files = this.files.filter(file => file !== this.selectedFile)
-    console.log(this.files)
+    this.bucket.files = this.files;
+    this.bucketService.deleteFile(this.bucketID, this.bucket).subscribe(() => console.log("File deleted"));
     this.selectedFile = null;
     this.closePopup()
-    console.log("File deleted")
   }
 
   // upload file
@@ -189,13 +186,7 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
       this.files.push(newFile)
       this.getBucketSize()
 
-      //   let formData = new FormData();
-      //   formData.set("file", this.file);
-
-      //   this.http
-      //     .post("http://localhost:5000/buckets/this.bucketID", formData)
-      //     .subscribe(response => {})
-      // console.log(newFile)
+      this.bucketService.uploadFile(this.bucketID, this.bucket).subscribe(() => console.log("File uploaded"));
     }
   }
 
