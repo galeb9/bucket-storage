@@ -13,7 +13,6 @@ export class CreateBucketComponent {
   location: string ="";
 
   createNewBucket () {
-    const data = 
     this.createBucket.emit({
       name: this.name,
       location: this.location

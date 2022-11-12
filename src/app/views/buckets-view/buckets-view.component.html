@@ -8,34 +8,7 @@
             <div class="">All buckets ({{ buckets.length || 0 }})</div>
             <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn--blue ">Create New Bucket</button>
         </div>
-        <!-- bucket list component -->
-        <!-- <div class="bucket-list">
-            <div class="bucket-list__header ps-1">
-                <div class="row">
-                    <div class="col-8">
-                        <h5 class="mb-0">Name</h5>
-                    </div>
-                    <div class="col-4">
-                        <h5>Location</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="bucket-list__body ps-1 mt-4 mb-2">
-                <div 
-                    class="bucket-list__body-item row"
-                    *ngFor="let bucket of buckets"
-                    (click)="openBucketItem(bucket.id)"
-                >
-                    <div class="col-8">
-                        <h5>{{ bucket.name }}</h5>
-                    </div>
-                    <div class="col-4">
-                        <h5>{{ bucket.location}}</h5>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <app-buckets-list [buckets]="buckets"></app-buckets-list>
+        <app-buckets-list (openBucket)="openBucketItem($event)" [buckets]="buckets"></app-buckets-list>
     </div>
     
 </div>

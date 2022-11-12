@@ -52,7 +52,6 @@ export class BucketsViewComponent implements OnInit {
   }
 
   openBucketItem (id: any) {
-    // console.log(`going to: /buckets-view/${id}`)
     this.router.navigateByUrl(`/single-bucket/${id}`);
   }
 }
