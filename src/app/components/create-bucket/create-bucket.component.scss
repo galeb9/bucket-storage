@@ -1,0 +1,16 @@
+.create-bucket__container {
+    font-weight: 600;
+    .create-bucket__heading {
+        font-size: 18px;
+    }
+    .create-bucket{
+        .create-bucket__label {
+            font-size: 22px;
+        }
+        .create-bucket__input {
+            padding: 0 6px 3px;
+            border: 2px solid black;
+            min-height: 25px;
+        }
+    }
+}

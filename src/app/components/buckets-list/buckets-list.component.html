@@ -1,0 +1,26 @@
+<div class="buckets-list">
+    <div class="buckets-list__header ps-1">
+        <div class="row">
+            <div class="col-8">
+                <h5 class="mb-0">Name</h5>
+            </div>
+            <div class="col-4">
+                <h5>Location</h5>
+            </div>
+        </div>
+    </div>
+    <div class="buckets-list__body ps-1 mt-4 mb-2">
+        <div 
+            class="buckets-list__body-item row"
+            *ngFor="let bucket of buckets"
+            (click)="openBucketItem(bucket.id)"
+        >
+            <div class="col-8">
+                <h5>{{ bucket.name }}</h5>
+            </div>
+            <div class="col-4">
+                <h5>{{ bucket.location}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

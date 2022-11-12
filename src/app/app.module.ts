@@ -12,19 +12,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './components/header/header.component';
 import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
+import { CreateBucketComponent } from './components/create-bucket/create-bucket.component';
+import { BucketsListComponent } from './components/buckets-list/buckets-list.component';
+
 
 // views
-import { BucketListComponent } from './views/bucket-list/bucket-list.component';
+import { BucketsViewComponent } from './views/buckets-view/buckets-view.component';
 import { SingleBucketComponent } from './views/single-bucket/single-bucket.component';
-import { NotFoundComponent } from './views/not-found/not-found.component';
 import { SingleBucketItemComponent } from './views/single-bucket-item/single-bucket-item.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: BucketListComponent },
+  { path: '', component: BucketsViewComponent },
   { 
     path: 'bucket-list', 
-    component: BucketListComponent,
+    component: BucketsViewComponent,
   },
   { 
     path: 'single-bucket', 
@@ -41,13 +44,15 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BucketListComponent,
+    BucketsViewComponent,
     SingleBucketComponent,
     NotFoundComponent,
     HeaderComponent,
     SingleBucketItemComponent,
     TabsComponent,
-    TabComponent
+    TabComponent,
+    CreateBucketComponent,
+    BucketsListComponent
   ],
   imports: [
     BrowserModule,

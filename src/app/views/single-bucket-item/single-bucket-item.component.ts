@@ -3,10 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Bucket, File } from 'src/app/Bucket';
 import { BucketService } from '../../services/bucket.service'
 import { faFileLines } from '@fortawesome/free-solid-svg-icons';
-
 import { HttpClient } from '@angular/common/http';
-
-
 @Component({
   selector: 'app-single-bucket-item',
   templateUrl: './single-bucket-item.component.html',
@@ -70,17 +67,11 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     this.selectedFile = null
   }
 
-  // calculateSize (size:number) {
-  //   size = Math.floor(size);
-  //   return size > 1000 ? Math.floor(size / 1000) + "MB" 
-  //     : size > 1000 ? Math.floor(size / 1000) + "MB" : size + "KB";
-  // }
-
   formatBytes(bytes:number, decimal:number = 0) {
-    const marker = 1024; // Change to 1000 if required
-    const kiloBytes = marker; // One Kilobyte is 1024 bytes
-    const megaBytes = marker * marker; // One MB is 1024 KB
-    const gigaBytes = marker * marker * marker; // One GB is 1024 MB
+    const marker = 1024;
+    const kiloBytes = marker;
+    const megaBytes = marker * marker; 
+    const gigaBytes = marker * marker * marker;
 
     if(decimal > 0) {
       if(bytes < kiloBytes) return bytes + " Bytes";
@@ -149,8 +140,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     this.closePopup()
   }
 
-  // upload file
-
   uploadFile(event: any) {
     this.warningMessage = ""
     this.deselectFile();
@@ -169,9 +158,10 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     }
   }
 
-  // Deatils
   getBucketSize () {
-    this.bucketSize = this.bucket.files.map((el:File) => +el.size).reduce((total:number, value:number) => total += value)
-    this.bucket.storageSize = this.bucketSize
+    if(this.bucket.files.length > 0) {
+      this.bucket.storageSize = this.bucket.files.map((el:File) => +el.size).reduce((total:number, value:number) => total += value)
+    }
+    this.bucketSize = this.bucket.storageSize
   }
 }

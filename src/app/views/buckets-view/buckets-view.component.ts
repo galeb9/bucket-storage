@@ -4,11 +4,11 @@ import { Bucket } from 'src/app/Bucket';
 import { BucketService } from '../../services/bucket.service'
 
 @Component({
-  selector: 'app-bucket-list',
-  templateUrl: './bucket-list.component.html',
-  styleUrls: ['./bucket-list.component.scss']
+  selector: 'app-buckets-view',
+  templateUrl: './buckets-view.component.html',
+  styleUrls: ['./buckets-view.component.scss']
 })
-export class BucketListComponent implements OnInit {
+export class BucketsViewComponent implements OnInit {
   buckets:Bucket[] = [];
 
   locations: string[]= [ "Ljubljana", "Kranj", "Koper"];
@@ -31,8 +31,11 @@ export class BucketListComponent implements OnInit {
     this.isCreateBucketOpen = false;
   }
 
-  createNewBucket () {
-    const randomNum = Math.floor(Math.random() * 1000)
+  createNewBucket (data:any) {
+    this.bucketName = data.name;
+    this.bucketLocation = data.location;
+    console.log("New data: ", this.bucketName, this.bucketLocation)
+    const randomNum = Math.floor(Math.random() * 1000);
     if(this.bucketName && this.bucketLocation) {
       const newBucket = {
         name: this.bucketName,
@@ -49,7 +52,7 @@ export class BucketListComponent implements OnInit {
   }
 
   openBucketItem (id: any) {
-    // console.log(`going to: /bucket-list/${id}`)
+    // console.log(`going to: /buckets-view/${id}`)
     this.router.navigateByUrl(`/single-bucket/${id}`);
   }
 }

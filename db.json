@@ -68,6 +68,13 @@
           "size": 10471
         }
       ]
+    },
+    {
+      "name": "asdfasdf",
+      "location": "Koper",
+      "id": 602,
+      "storageSize": 0,
+      "files": []
     }
   ]
 }
