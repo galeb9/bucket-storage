@@ -43,8 +43,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    // this.findRouteBucket(this.bucketID)
-    this.formatDate("Thu Jan 8 2022 12:26:51 GMT+0100 (Central European Standard Time)")
   }
 
   getRouteID () {
@@ -89,30 +87,13 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
       else if(bytes < megaBytes) return(bytes / kiloBytes).toFixed(decimal) + " KB";
       else if(bytes < gigaBytes) return(bytes / megaBytes).toFixed(decimal) + " MB";
       else return(bytes / gigaBytes).toFixed(decimal) + " GB";
-      // if(bytes < kiloBytes) return bytes + " Bytes";
-      // else if(bytes < megaBytes) return Number.isInteger(bytes / kiloBytes) ? (bytes / kiloBytes) + "KB" : (bytes / kiloBytes).toFixed(decimal) + " KB";
-      // else if(bytes < gigaBytes) return Number.isInteger(bytes / megaBytes) ? (bytes / megaBytes) + "MB" : (bytes / megaBytes).toFixed(decimal) + " MB";
-      // else return Number.isInteger(bytes / megaBytes) ? (bytes / gigaBytes) + "GB" : (bytes / gigaBytes).toFixed(decimal) + " GB";
+
     } else {
         if(bytes < kiloBytes) return bytes + " Bytes";
         else if(bytes < megaBytes) return Math.round(bytes / kiloBytes) + " KB";
         else if(bytes < gigaBytes) return Math.round(bytes / megaBytes) + " MB";
         else return Math.round(bytes / gigaBytes) + " GB";
     }
-
-
-  }
-
-  formatDetailsBytes(bytes:number) {
-    const marker = 1024; // Change to 1000 if required
-    const kiloBytes = marker; // One Kilobyte is 1024 bytes
-    const megaBytes = marker * marker; // One MB is 1024 KB
-    const gigaBytes = marker * marker * marker; // One GB is 1024 MB
-
-    if(bytes < kiloBytes) return bytes + " Bytes";
-    else if(bytes < megaBytes) return Math.round(bytes / kiloBytes).toFixed() + " KB";
-    else if(bytes < gigaBytes) return Math.round(bytes / megaBytes) + " MB";
-    else return Math.round(bytes / gigaBytes) + " GB";
   }
 
   addZeros(item:string) {
@@ -158,7 +139,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   deleteBucket () {
     this.closePopup()
     this.bucketService.deleteBucket(this.bucket).subscribe(() => this.route.navigateByUrl("/"));
-    console.log("Bucket deleted")
   }
 
   deleteFile () {
@@ -174,7 +154,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   uploadFile(event: any) {
     this.warningMessage = ""
     this.deselectFile();
-
     const file = event.target.files[0];
     const date = this.formatDate(file.lastModifiedDate)
     if(file) {
@@ -184,16 +163,15 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
         size: file.size
       }
       this.files.push(newFile)
-      this.getBucketSize()
 
-      this.bucketService.uploadFile(this.bucketID, this.bucket).subscribe(() => console.log("File uploaded"));
+      this.getBucketSize()
+      this.bucketService.uploadFile(this.bucketID, this.bucket).subscribe(() => console.log("File upload"));
     }
   }
 
   // Deatils
-  getBucketSize (newFileSize:number = 0) {
-    this.bucketSize = this.files.map(el => +el.size).reduce((total, value) => total += value)
-    // update bucket size if new files are uploaded
-    // this.bucketSize = this.bucket.storageSize + newFileSize
+  getBucketSize () {
+    this.bucketSize = this.bucket.files.map((el:File) => +el.size).reduce((total:number, value:number) => total += value)
+    this.bucket.storageSize = this.bucketSize
   }
 }

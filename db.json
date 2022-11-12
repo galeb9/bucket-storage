@@ -4,7 +4,7 @@
       "id": 1,
       "name": "BestStorage",
       "location": "Kranj",
-      "storageSize": 2.8,
+      "storageSize": 37705,
       "files": [
         {
           "name": "FileName01",
@@ -55,12 +55,17 @@
       "id": 3,
       "name": "SomeImages",
       "location": "Koper",
-      "storageSize": 3.2,
+      "storageSize": 12471,
       "files": [
         {
           "name": "FileName01",
           "lastModified": "06.09.2015",
           "size": 2000
+        },
+        {
+          "name": "Screenshot 2022-11-12 141033.png",
+          "lastModified": "12.11.2022",
+          "size": 10471
         }
       ]
     }

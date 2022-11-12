@@ -1,6 +1,7 @@
-.app-container {
-    // max-width: 1200px;
-    // margin: 0 auto;
+
+#app {
+    width: 100%;
     min-height: 100vh;
     background-color: var(--bg);
+    font-family: 'Comic Neue', cursive;
 }

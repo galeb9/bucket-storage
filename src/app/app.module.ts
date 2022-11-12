@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import  { HttpClientModule } from '@angular/common/http'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -52,7 +51,6 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false}),
     NgbModule,
     FormsModule,

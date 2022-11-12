@@ -13,7 +13,7 @@
                         <input (change)="uploadFile($event)" type="file" id="upload-file" />
                     </div>
                 </div>
-                <div class="file-list">
+                <div *ngIf="bucket.files.length; else notify" class="file-list">
                     <div class="file-list__header">
                         <div class="row">
                             <div class="col-6 ps-0 file-list__name">
@@ -49,6 +49,9 @@
                         </div>
                     </div>
                 </div>
+                <ng-template #notify>
+                    <p class="no-files fst-italic mt-5 text-center">No files. Please add them with a simple click on the upload object.</p>
+                </ng-template>
             </div>
         </app-tab>
 
@@ -65,7 +68,7 @@
                 </div>
                 <div class="details__item row ps-4">
                     <p class="details__item-text col-2">Sotrage size:</p>
-                    <p class="details__item-text col-3">{{  formatBytes(bucketSize, 1) }}</p>
+                    <p class="details__item-text col-3">{{  formatBytes( bucket.storageSize, 1) }}</p>
                 </div>
             </div>
         </app-tab>

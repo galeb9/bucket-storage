@@ -2,27 +2,30 @@
     <h1>Bucket list</h1>
 
     <!-- create bucket component  -->
-    <div *ngIf="isCreateBucketOpen" class="create-bucket__container  container py-4 px-4 mt-5 bg-white rounded">
-        <h5 class="mb-3 create-bucket__heading">Create New Bucket</h5>
-        <div class="row mb-4">
-            <div class="col-4">
-                <label class="create-bucket__label mb-2" for="name">Bucket Name*</label><br>
-                <input class="create-bucket__input w-100" [(ngModel)]="bucketName" type="text" id="name" name="name" placeholder="Type name here">
+    <div *ngIf="isCreateBucketOpen" class="create-bucket__container container py-4 ">
+        <h5 class="create-bucket__heading mt-3 mx-4">Create New Bucket</h5>
+        <div class="create-bucket py-4 px-4  bg-white">
+            <div class="row mb-4">
+                <div class="col-4">
+                    <label class="create-bucket__label mb-2" for="name">Bucket Name*</label><br>
+                    <input class="create-bucket__input w-100" [(ngModel)]="bucketName" type="text" id="name" name="name" placeholder="Type name here">
+                </div>
+                <div class="col-3"></div>
+                <div class="col-4">
+                    <label class="create-bucket__label mb-2" for="location">Bucket Name*</label><br>
+                    <select [(ngModel)]="bucketLocation" class="create-bucket__input w-100" aria-label="Default select example">
+                        <option *ngFor="let location of locations" [ngValue]="location">{{location}}</option>
+                      </select>
+                </div>
             </div>
-            <div class="col-3"></div>
-            <div class="col-4">
-                <label class="create-bucket__label mb-2" for="location">Bucket Name*</label><br>
-                <select [(ngModel)]="bucketLocation" class="create-bucket__input w-100" aria-label="Default select example">
-                    <option *ngFor="let location of locations" [ngValue]="location">{{location}}</option>
-                  </select>
-            </div>
+            <button (click)="createNewBucket()" class="bucket__btn--blue ">Create Bucket</button>
         </div>
-        <button (click)="createNewBucket()" class="bucket__btn--blue ">Create Bucket</button>
+ 
     </div>
 
 
     <!-- bucket list component -->
-    <div class="container bg-white py-4 px-4 mt-5 rounded">
+    <div class="container bg-white py-4 px-4 mt-5">
         <div class="d-flex justify-content-between pb-4">
             <div class="">All buckets ({{ buckets.length || 0 }})</div>
             <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn--blue ">Create New Bucket</button>
@@ -54,5 +57,5 @@
             </div>
         </div>
     </div>
-
+    
 </div>
