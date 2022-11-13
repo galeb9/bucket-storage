@@ -1,0 +1,11 @@
+.details__container {
+    .details__item {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        .details__item-text {
+            width: 120px;
+            margin-bottom: 10px;
+        }
+    }
+}

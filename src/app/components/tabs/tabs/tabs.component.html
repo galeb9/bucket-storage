@@ -6,7 +6,7 @@
             (click)="selectTab(tab)" 
             [ngClass]="{ changeBackground : tab.active }"
         >   
-            {{tab.title}}
+            {{ tab.active && tab.longTitle ? tab.longTitle : tab.title}}
         </div>
     </div>
     <div class="tabs__body bg-white">

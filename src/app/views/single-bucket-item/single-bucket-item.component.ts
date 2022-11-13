@@ -79,8 +79,11 @@ export class SingleBucketItemComponent implements OnInit {
 
   openPopup(condition:any) {
     this.activeCondition = condition;
-    let fileText = this.selectedFile ?  `Would you like to delete file ${this.selectedFile.name}?` : ""
-    let bucketText = `Would you like to delete bucket ${this.bucket.name}?`;
+    // let fileText = this.selectedFile ?  `Would you like to delete file ${this.selectedFile.name}?` : ""
+    let fileText = this.selectedFile ?  "Do your really want to delete this object?" : ""
+
+    // let bucketText = `Would you like to delete bucket ${this.bucket.name}?`;
+    let bucketText = "Do your really want to delete this bucket?";
 
     if(this.activeCondition) {
       this.isPopupOpen = true; 

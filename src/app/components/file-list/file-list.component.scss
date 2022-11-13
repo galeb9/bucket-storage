@@ -4,6 +4,9 @@
         background-color: var(--secondary);
         border-bottom: 3px solid black;
         .row { margin: 0 10px }
+        h5 {
+            margin-bottom: 0 !important;
+        }
     }
     .file-list__body {
         .file-list__body-item {

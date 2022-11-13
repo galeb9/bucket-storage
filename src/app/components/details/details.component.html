@@ -1,14 +1,14 @@
 <div class="details__container">
-    <div class="details__item row ps-4">
-        <p class="details__item-text col-2">Bucket name:</p>
-        <p class="details__item-text col-2">{{ bucket.name }}</p>
+    <div class="details__item">
+        <p class="details__item-text text-end">Bucket name:</p>
+        <p class="details__item-text">{{ bucket.name }}</p>
     </div>
-    <div class="details__item row ps-4">
-        <p class="details__item-text col-2">Location:</p>
-        <p class="details__item-text col-3">{{ bucket.location }}</p>
+    <div class="details__item">
+        <p class="details__item-text text-end text-end">Location:</p>
+        <p class="details__item-text">{{ bucket.location }}</p>
     </div>
-    <div class="details__item row ps-4">
-        <p class="details__item-text col-2">Sotrage size:</p>
-        <p class="details__item-text col-3">{{ formatBytes( bucket.storageSize, 1) }}</p>
+    <div class="details__item">
+        <p class="details__item-text text-end">Sotrage size:</p>
+        <p class="details__item-text">{{ formatBytes( bucket.storageSize, 1) }}</p>
     </div>
 </div>

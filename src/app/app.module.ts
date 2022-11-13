@@ -14,7 +14,6 @@ import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
 import { CreateBucketComponent } from './components/create-bucket/create-bucket.component';
 import { BucketsListComponent } from './components/buckets-list/buckets-list.component';
-import { FilesComponent } from './components/files/files.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { DetailsComponent } from './components/details/details.component';
 import { FileListComponent } from './components/file-list/file-list.component';
@@ -52,7 +51,6 @@ const appRoutes: Routes = [
     TabComponent,
     CreateBucketComponent,
     BucketsListComponent,
-    FilesComponent,
     PopupComponent,
     DetailsComponent,
     FileListComponent,

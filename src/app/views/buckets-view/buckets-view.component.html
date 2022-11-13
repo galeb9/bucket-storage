@@ -1,12 +1,12 @@
 <div class="container bucket-list__container">
-    <h1>Bucket list</h1>
+    <h2 class="mb-4">Bucket list</h2>
     <app-create-bucket 
         *ngIf="isCreateBucketOpen" 
         (createBucket)="createNewBucket($event)"
         [warningMessage]="warningMessage"
     ></app-create-bucket>
 
-    <div class="container bg-white py-4 px-4 mt-5">
+    <div class="container bg-white py-4 px-4">
         <div class="d-flex justify-content-between pb-4">
             <div class="">All buckets ({{ buckets.length || 0 }})</div>
             <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn--blue ">Create New Bucket</button>

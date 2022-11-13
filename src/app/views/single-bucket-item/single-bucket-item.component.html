@@ -3,7 +3,7 @@
 
     <app-tabs class="tabs__container">
         <app-tab [tabTitle]="'Files'">
-            <div class="file__container container bg-white px-4  rounded">
+            <div class="file__container container bg-white   rounded">
                 <div class="d-flex justify-content-between pb-1">
                     <p>All Files ({{ fileCount }})</p>
                     <div class="file__container-btns">
@@ -24,7 +24,7 @@
             </div>
         </app-tab>
 
-        <app-tab tabTitle="Details">
+        <app-tab tabTitle="Details" longTitle="Bucket details">
             <button (click)="openPopup(true)" class="bucket__btn--delete btn__absolute">Delete Bucket</button>
             <app-details [bucket]="bucket"></app-details>
         </app-tab>
