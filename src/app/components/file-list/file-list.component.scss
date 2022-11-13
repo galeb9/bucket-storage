@@ -1,0 +1,43 @@
+.file-list {
+    border: 3px solid black;
+    .file-list__header {
+        background-color: var(--secondary);
+        border-bottom: 3px solid black;
+        .row { margin: 0 10px }
+    }
+    .file-list__body {
+        .file-list__body-item {
+            align-items: center;
+            transition: var(--transition);
+            --bs-gutter-x: 0;
+            border-bottom: 1px solid var(--secondary);
+            margin: 0 10px;
+            &:hover {
+                background-color: var(--secondary);
+                cursor: pointer;
+            }
+        }
+        .select-item {
+            background-color: var(--secondary);
+        }
+    }
+    .file-list__name {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        .file-icon {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+        // marigin of icon not empty: margin-left + width of icon
+        .file-icon--empty {
+            margin-left: 28px;
+        }
+    }
+    .text-overflow {
+        max-width: 250px;
+        overflow:hidden; 
+        white-space:nowrap; 
+        text-overflow: ellipsis;
+    }
+}

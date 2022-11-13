@@ -1,16 +1,13 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bucket, File } from 'src/app/Bucket';
 import { BucketService } from '../../services/bucket.service'
-import { faFileLines } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-single-bucket-item',
   templateUrl: './single-bucket-item.component.html',
   styleUrls: ['./single-bucket-item.component.scss']
 })
-export class SingleBucketItemComponent implements OnInit, AfterContentInit {
-  faFileLines = faFileLines;
+export class SingleBucketItemComponent implements OnInit {
   bucketID:any = null; 
   fileCount:number = 0; 
   buckets:Bucket[] = [];
@@ -26,31 +23,26 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private route: Router,
-    private bucketService: BucketService,
-    private http: HttpClient
+    private bucketService: BucketService
   ) {}
 
   ngOnInit(): void {
-      this.bucketID = this.getRouteID();
+      this.getRouteID();
       this.getAllBuckets();
-      setTimeout(() => {
-        this.findRouteBucket(this.bucketID);
-        this.getBucketSize();
-      }, 1000);
-  }
-
-  
-  myCallbackFunction = (args: any): void => {
-    console.log(args)
-  }
-
-  ngAfterContentInit(): void {
-    
   }
 
   getRouteID () {
-    return this.activatedRoute.snapshot.paramMap.get('id');
+    this.bucketID = this.activatedRoute.snapshot.paramMap.get('id');
   }
+
+  getAllBuckets() {
+    this.bucketService.getBuckets().subscribe((buckets) => {
+      this.buckets = buckets;
+      this.findRouteBucket(this.bucketID);
+      this.getBucketSize();
+    });
+  }
+  
 
   findRouteBucket(id:any) {
     this.bucket = this.buckets.find((bucket) => bucket.id == id);
@@ -60,10 +52,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
     } 
   }
 
-  getAllBuckets() {
-    this.bucketService.getBuckets().subscribe((buckets) => this.buckets = buckets);
-  }
-
   selectFile(file: File) {
     this.selectedFile = file;
     console.log(this.selectedFile)
@@ -71,26 +59,6 @@ export class SingleBucketItemComponent implements OnInit, AfterContentInit {
 
   deselectFile() {
     this.selectedFile = null
-  }
-
-  formatBytes(bytes:number, decimal:number = 0) {
-    const marker = 1024;
-    const kiloBytes = marker;
-    const megaBytes = marker * marker; 
-    const gigaBytes = marker * marker * marker;
-
-    if(decimal > 0) {
-      if(bytes < kiloBytes) return bytes + " Bytes";
-      else if(bytes < megaBytes) return(bytes / kiloBytes).toFixed(decimal) + " KB";
-      else if(bytes < gigaBytes) return(bytes / megaBytes).toFixed(decimal) + " MB";
-      else return(bytes / gigaBytes).toFixed(decimal) + " GB";
-
-    } else {
-        if(bytes < kiloBytes) return bytes + " Bytes";
-        else if(bytes < megaBytes) return Math.round(bytes / kiloBytes) + " KB";
-        else if(bytes < gigaBytes) return Math.round(bytes / megaBytes) + " MB";
-        else return Math.round(bytes / gigaBytes) + " GB";
-    }
   }
 
   addZeros(item:string) {

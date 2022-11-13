@@ -4,7 +4,7 @@
       "id": 1,
       "name": "BestStorage",
       "location": "Kranj",
-      "storageSize": 37705,
+      "storageSize": 3402961,
       "files": [
         {
           "name": "FileName01",
@@ -32,7 +32,7 @@
       "id": 2,
       "name": "Pics",
       "location": "Ljubljana",
-      "storageSize": 4.9,
+      "storageSize": 46176,
       "files": [
         {
           "name": "FileName03",
@@ -70,9 +70,9 @@
       ]
     },
     {
-      "name": "asdfasdf",
-      "location": "Koper",
-      "id": 602,
+      "name": "SomeBucket",
+      "location": "Kranj",
+      "id": 633,
       "storageSize": 0,
       "files": []
     }

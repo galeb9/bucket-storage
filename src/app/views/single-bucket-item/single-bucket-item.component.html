@@ -12,42 +12,12 @@
                         <input (change)="uploadFile($event)" type="file" id="upload-file" />
                     </div>
                 </div>
-                <div *ngIf="bucket.files.length; else notify" class="file-list">
-                    <div class="file-list__header">
-                        <div class="row">
-                            <div class="col-6 ps-0 file-list__name">
-                                <div class="file-icon--empty" ></div>
-                                <h5 class="mb-0">Name</h5>
-                            </div>
-                            <div class="col-3 ps-0">
-                                <h5>Last modified</h5>
-                            </div>
-                            <div class="col-3 ps-0">
-                                <h5>Size</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="file-list__body mt-3 mb-4">
-                        <div 
-                            class="file-list__body-item mb-1 row"
-                            *ngFor="let file of files"
-                            (click)="selectFile(file)"
-                            [ngClass]="{ 'select-item' : selectedFile === file }"
-
-                        >
-                            <div class="col-6 file-list__name">
-                                <fa-icon class="file-icon" [icon]="faFileLines"></fa-icon>
-                                <h5 class="mb-0 text-overflow">{{ file.name }}</h5>
-                            </div>
-                            <div class="col-3">
-                                <h5>{{ file.lastModified}}</h5>
-                            </div>
-                            <div class="col-3">
-                                <h5>{{ formatBytes(file.size) }}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-file-list 
+                    *ngIf="bucket.files.length; else notify"
+                    [files]="files"
+                    [selectedFile]="selectedFile"
+                    (onSelectFile)="selectFile($event)"
+                ></app-file-list>
                 <ng-template #notify>
                     <p class="no-files fst-italic mt-5 text-center">No files. Please add them with a simple click on the upload object.</p>
                 </ng-template>
@@ -56,22 +26,8 @@
 
         <app-tab tabTitle="Details">
             <button (click)="openPopup(true)" class="bucket__btn--delete btn__absolute">Delete Bucket</button>
-            <div class="details__container">
-                <div class="details__item row ps-4">
-                    <p class="details__item-text col-2">Bucket name:</p>
-                    <p class="details__item-text col-2">{{ bucket.name }}</p>
-                </div>
-                <div class="details__item row ps-4">
-                    <p class="details__item-text col-2">Location:</p>
-                    <p class="details__item-text col-3">{{ bucket.location }}</p>
-                </div>
-                <div class="details__item row ps-4">
-                    <p class="details__item-text col-2">Sotrage size:</p>
-                    <p class="details__item-text col-3">{{  formatBytes( bucket.storageSize, 1) }}</p>
-                </div>
-            </div>
+            <app-details [bucket]="bucket"></app-details>
         </app-tab>
-
     </app-tabs>
 
     <p *ngIf="warningMessage" class="warning-message rounded">{{ warningMessage }}</p>

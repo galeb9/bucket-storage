@@ -1,0 +1,36 @@
+<div class="file-list">
+    <div class="file-list__header">
+        <div class="row">
+            <div class="col-6 ps-0 file-list__name">
+                <div class="file-icon--empty" ></div>
+                <h5 class="mb-0">Name</h5>
+            </div>
+            <div class="col-3 ps-0">
+                <h5>Last modified</h5>
+            </div>
+            <div class="col-3 ps-0">
+                <h5>Size</h5>
+            </div>
+        </div>
+    </div>
+    <div class="file-list__body mt-3 mb-4">
+        <div 
+            class="file-list__body-item mb-1 row"
+            *ngFor="let file of files"
+            (click)="selectFile(file)"
+            [ngClass]="{ 'select-item' : selectedFile === file }"
+
+        >
+            <div class="col-6 file-list__name">
+                <fa-icon class="file-icon" [icon]="faFileLines"></fa-icon>
+                <h5 class="mb-0 text-overflow">{{ file.name }}</h5>
+            </div>
+            <div class="col-3">
+                <h5>{{ file.lastModified}}</h5>
+            </div>
+            <div class="col-3">
+                <h5>{{ formatBytes(file.size) }}</h5>
+            </div>
+        </div>
+    </div>
+</div>

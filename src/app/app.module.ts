@@ -23,6 +23,8 @@ import { SingleBucketItemComponent } from './views/single-bucket-item/single-buc
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { FilesComponent } from './components/files/files.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { DetailsComponent } from './components/details/details.component';
+import { FileListComponent } from './components/file-list/file-list.component';
 
 
 const appRoutes: Routes = [
@@ -57,6 +59,8 @@ const appRoutes: Routes = [
     BucketsListComponent,
     FilesComponent,
     PopupComponent,
+    DetailsComponent,
+    FileListComponent,
   ],
   imports: [
     BrowserModule,
