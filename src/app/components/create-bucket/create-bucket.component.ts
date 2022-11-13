@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-create-bucket',
@@ -6,7 +6,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./create-bucket.component.scss']
 })
 export class CreateBucketComponent {
-  @Output() createBucket:EventEmitter<any> = new EventEmitter<string>();
+  @Input() warningMessage: string = "";
+  @Output() createBucket:EventEmitter<any> = new EventEmitter<any>();
 
   locations: string[]= [ "Ljubljana", "Kranj", "Koper"];
   name: string = "";

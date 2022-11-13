@@ -8,12 +8,13 @@
             </div>
             <div class="col-3"></div>
             <div class="col-4">
-                <label class="create-bucket__label mb-2" for="location">Bucket Name*</label><br>
+                <label class="create-bucket__label mb-2" for="location">Bucket Location*</label><br>
                 <select [(ngModel)]="location" class="create-bucket__input w-100" aria-label="Default select example">
                     <option *ngFor="let location of locations" [ngValue]="location">{{location}}</option>
                   </select>
             </div>
         </div>
         <button (click)="createNewBucket()" class="bucket__btn--blue ">Create Bucket</button>
+        <p *ngIf="warningMessage" class="warning-message rounded">{{ warningMessage }}</p>
     </div>
 </div>

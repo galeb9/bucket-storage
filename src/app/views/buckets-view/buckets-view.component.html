@@ -1,14 +1,24 @@
 <div class="container bucket-list__container">
     <h1>Bucket list</h1>
-
-    <app-create-bucket *ngIf="isCreateBucketOpen" (createBucket)="createNewBucket($event)"></app-create-bucket>
+    <app-create-bucket 
+        *ngIf="isCreateBucketOpen" 
+        (createBucket)="createNewBucket($event)"
+        [warningMessage]="warningMessage"
+    ></app-create-bucket>
 
     <div class="container bg-white py-4 px-4 mt-5">
         <div class="d-flex justify-content-between pb-4">
             <div class="">All buckets ({{ buckets.length || 0 }})</div>
             <button (click)="openCreateBucket()" *ngIf="!isCreateBucketOpen" class="bucket__btn--blue ">Create New Bucket</button>
         </div>
-        <app-buckets-list (openBucket)="openBucketItem($event)" [buckets]="buckets"></app-buckets-list>
+        <app-buckets-list 
+            *ngIf="buckets.length; else notify"
+            (openBucket)="openBucketItem($event)" 
+            [buckets]="buckets"
+        ></app-buckets-list>
+        <ng-template #notify>
+            <p class="no-files fst-italic mt-5 text-center">No buckets. Please add them with a click on Create New Bucket button.</p>
+        </ng-template>
     </div>
     
 </div>

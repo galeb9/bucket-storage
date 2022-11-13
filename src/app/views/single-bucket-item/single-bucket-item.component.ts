@@ -8,14 +8,14 @@ import { BucketService } from '../../services/bucket.service'
   styleUrls: ['./single-bucket-item.component.scss']
 })
 export class SingleBucketItemComponent implements OnInit {
-  bucketID:any = null; 
   fileCount:number = 0; 
+  bucketID:any = null; 
+  isPopupOpen:boolean = false;
+  popupText:string = "";
+  warningMessage:string = ""; 
   buckets:Bucket[] = [];
   files:File[] = [];
   bucket:any;
-  warningMessage:string = ""; 
-  popupText:string = "";
-  isPopupOpen:boolean = false;
   selectedFile:any;
   activeCondition:any;
   bucketSize:any;

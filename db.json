@@ -75,6 +75,20 @@
       "id": 633,
       "storageSize": 0,
       "files": []
+    },
+    {
+      "name": "apple",
+      "location": "Koper",
+      "id": 461,
+      "storageSize": 0,
+      "files": []
+    },
+    {
+      "name": "Bucket",
+      "location": "Ljubljana",
+      "id": 823,
+      "storageSize": 0,
+      "files": []
     }
   ]
 }

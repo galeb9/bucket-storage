@@ -10,10 +10,10 @@ import { BucketService } from '../../services/bucket.service'
 })
 export class BucketsViewComponent implements OnInit {
   buckets:Bucket[] = [];
-
-  isCreateBucketOpen:boolean = false;
+  warningMessage:string = ""; 
   bucketName:string = "";
   bucketLocation:string = "";
+  isCreateBucketOpen:boolean = false;
 
   constructor(private router: Router, private bucketService: BucketService) {}
 
@@ -30,6 +30,7 @@ export class BucketsViewComponent implements OnInit {
   }
 
   createNewBucket (data:any) {
+    this.warningMessage = ""
     this.bucketName = data.name;
     this.bucketLocation = data.location;
     console.log("New data: ", this.bucketName, this.bucketLocation)
@@ -45,6 +46,8 @@ export class BucketsViewComponent implements OnInit {
       this.bucketService.createBucket(newBucket).subscribe(() => this.buckets.push(newBucket))
       console.log(randomNum);
       this.closeCreateBucket();
+    } else{ 
+      this.warningMessage = "Please choose a name and location for the new bucket" 
     }
   }
 

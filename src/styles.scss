@@ -33,3 +33,18 @@
 .bucket__btn { color:  black }
 .bucket__btn--delete { background-color: var(--error) }
 .bucket__btn--blue { background-color: var(--btn); }
+
+.warning-message {
+    background-color: orange;
+    color: white;
+    padding: 14px 30px;
+    width: max-content;
+    margin-top: 30px;
+    animation: fade-in 0.5s ease-in both alternate;
+}
+
+// animations
+@keyframes fade-in {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
